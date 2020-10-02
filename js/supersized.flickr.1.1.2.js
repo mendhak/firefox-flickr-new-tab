@@ -7,12 +7,11 @@
 	Released under MIT License / GPL License
 */
 
-(function($){
+$(function(){
 
 	//Add in Supersized elements
-	$(document).ready(function() {
-		$('body').prepend('<div id="supersized-loader"></div>').prepend('<div id="supersized"></div>');
-	});
+    $('body').prepend('<div id="supersized-loader"></div>').prepend('<div id="supersized"></div>');
+
 	
 	//Resize image on ready or resize
 	$.supersized = function( options ) {
@@ -219,15 +218,16 @@
 		element.hide();					//Hide image to be faded in
 		$('#controls-wrapper').hide();	//Hide controls to be displayed
 		
-		//Account for loading in IE
-		$(document).ready(function() {
-			resizenow();
-		});
+		// //Account for loading in IE
+		// $(document).ready(function() {
+		// 	resizenow();
+		// });
 		
-		$(window).load(function() {
-			ready();
-		});
 		
+		// $(window).on('load', function() {
+		// 	ready();
+		// });
+
 		var ready = function(){
 			if(flickrLoaded) {
 				loadFunc();
@@ -235,7 +235,9 @@
 				setTimeout(ready, 100);
 			}
 		};
-		
+
+		ready();
+				
 		var loadFunc = function(){
 			
 			$('#supersized-loader').hide();		//Hide loading animation
@@ -886,5 +888,5 @@
 		
 	};
 		
-})(jQuery);
+});
 
