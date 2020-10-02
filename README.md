@@ -1,6 +1,6 @@
 ## Firefox Extension for Mendhak Photos
 
-This is a basic Firefox extension that replaces the New Tab in Firefox, and displays an image from [my Flickr photostream](https://www.flickr.com/photos/mendhak/)
+This is a basic [Firefox extension](https://addons.mozilla.org/en-GB/firefox/addon/mendhak-flickr-new-tab/) that replaces the New Tab in Firefox, and displays an image from [my Flickr photostream](https://www.flickr.com/photos/mendhak/)
 
 
 ### Packaging
