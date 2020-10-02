@@ -30,7 +30,7 @@
 			transition_speed		:	750,	//Speed of transition
 			new_window				:	1,		//Image links open in new window/tab
 			pause_hover             :   0,		//Pause slideshow on hover
-			keyboard_nav            :   1,		//Keyboard navigation on/off
+			keyboard_nav            :   0,		//Keyboard navigation on/off
 			performance				:	1,		//0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
 			image_protect			:	1,		//Disables image dragging and right click with Javascript
 			image_path				:	'img/', //Default image path
@@ -135,7 +135,7 @@
     	switch(options.source){
 		    		
 	    	case 1:		//From a Set
-	    		var flickrURL =  'https://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&extras=url_k,url_q,url_o&api_key=' + options.api_key + '&photoset_id=' + options.set + '&per_page=' + options.total_slides + '&sort=' + sort_order + '&format=json&nojsoncallback=1';
+	    		var flickrURL =  'https://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&extras=url_k,url_3k,url_4k,url_q,url_o&api_key=' + options.api_key + '&photoset_id=' + options.set + '&per_page=' + options.total_slides + '&sort=' + sort_order + '&format=json&nojsoncallback=1';
 	    		break;
 	    	case 2:		//From a User
 	    		var flickrURL =  'https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&extras=url_k,url_q,url_o&api_key=' + options.api_key + '&user_id=' + options.user + '&per_page=' + options.total_slides + '&sort=' + sort_order + '&format=json&nojsoncallback=1';
@@ -164,7 +164,13 @@
     			$.each(flickrResults, function(i,item){
     			
     			    //create image urls
-    			    var photoURL = (item.url_k) ? item.url_k : item.url_o;
+					var photoURL = (item.url_k) ? item.url_k : item.url_o;
+					if(item.url_4k){
+						photoURL = item.url_4k;
+					}
+					if(item.url_3k){
+						photoURL = item.url_3k;
+					}
     			    var thumbURL = item.url_q;
     			    var photoLink = "https://www.flickr.com/photos/" + (data.photoset ? data.photoset.owner : item.owner) + "/" + item.id + "/";
     			   	
@@ -205,7 +211,7 @@
 				
 				/***End load initial images***/
 				flickrLoaded = true;
-				//setTimeout(function () { ready(); });
+				setTimeout(function () { ready(); });
     		}//End AJAX Callback 
     	 });
 
