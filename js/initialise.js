@@ -8,7 +8,7 @@ var touchDevice = ('ontouchstart' in document.documentElement);
 				autoplay				:	1,		//Slideshow starts playing automatically
 				start_slide             :   1,		//Start slide (0 is random)
 				random					: 	1,		//Randomize slide order (Ignores start slide)
-				slide_interval          :   30000,	//Length between transitions
+				slide_interval          :   60000,	//Length between transitions
 				transition              :   1, 		//0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
 				transition_speed		:	2000,	//Speed of transition
 				new_window				:	1,		//Image links open in new window/tab
@@ -34,7 +34,7 @@ var touchDevice = ('ontouchstart' in document.documentElement);
 				
 				//Flickr
 				source					:	1,						//1-Set, 2-User, 3-Group, 4-Tags
-				set                     :   '72157709915475997', 				//Flickr set ID (found in URL)
+				set                     :   '72157716222153076', 				//Flickr set ID (found in URL)
 				user					:	'69135870@N00',				//Flickr user ID (http://idgettr.com/)
 
 				total_slides			:	100,					//How many pictures to pull (Between 1-500)

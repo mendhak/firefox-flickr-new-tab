@@ -4,7 +4,7 @@
     "name": "Mendhak's Flickr",
     "version": "1.0",
   
-    "description": "Photos from Mendhak's Flickr stream whenever a new Tab is displayed",
+    "description": "Replaces Firefox New Tab, with photos from Mendhak's Flickr stream",
   
     "icons": {
       "48": "icons/favicon.png"
@@ -13,14 +13,8 @@
     "chrome_url_overrides": {
         "newtab":"flickrtab.html"
     },
-
-    "background": {
-        "scripts": [
-            "js/jquery-1.8.2.min.js",
-            "js/supersized.flickr.1.1.2.js"
-        ],
-        "persistent": true
-    },
+    "homepage_url": "https://github.com/mendhak/firefox-mendhak-flickr",
+    
     "permissions": ["storage"]
      
   
