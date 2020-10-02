@@ -165,12 +165,12 @@
     			
     			    //create image urls
 					var photoURL = (item.url_k) ? item.url_k : item.url_o;
-					if(item.url_4k){
-						photoURL = item.url_4k;
-					}
-					if(item.url_3k){
-						photoURL = item.url_3k;
-					}
+					// if(item.url_4k){
+					// 	photoURL = item.url_4k;
+					// }
+					// if(item.url_3k){
+					// 	photoURL = item.url_3k;
+					// }
     			    var thumbURL = item.url_q;
     			    var photoLink = "https://www.flickr.com/photos/" + (data.photoset ? data.photoset.owner : item.owner) + "/" + item.id + "/";
     			   	
@@ -211,7 +211,7 @@
 				
 				/***End load initial images***/
 				flickrLoaded = true;
-				setTimeout(function () { ready(); });
+				//setTimeout(function () { ready(); });
     		}//End AJAX Callback 
     	 });
 
