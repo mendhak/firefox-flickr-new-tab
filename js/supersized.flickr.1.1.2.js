@@ -194,18 +194,22 @@ $(function(){
 					//Set previous image
 					currentSlide - 1 < 0  ? loadPrev = options.slides.length - 1 : loadPrev = currentSlide - 1;	//If slide is 1, load last slide as previous
 					var imageLink = (options.slides[loadPrev].url) ? "href='" + options.slides[loadPrev].url + "'" : "";
-					$("<img/>").attr("src", options.slides[loadPrev].image).appendTo(element).wrap('<a ' + imageLink + linkTarget + '></a>');
+					//$("<img/>").attr("src", options.slides[loadPrev].image).appendTo(element).wrap('<a ' + imageLink + linkTarget + '></a>');
+					$("<img/>").css("background-image", 'url("' + options.slides[loadPrev].image + '");').appendTo(element).wrap('<a ' + imageLink + linkTarget + '></a>');
 				}
 				
+				// $("#theimage").css("background", "url(\"" + options.slides[loadPrev].image + "\") no-repeat center center fixed");
+
 				//Set current image
 				imageLink = (options.slides[currentSlide].url) ? "href='" + options.slides[currentSlide].url + "'" : "";
-				$("<img/>").attr("src", options.slides[currentSlide].image).appendTo(element).wrap('<a class="activeslide" ' + imageLink + linkTarget + '></a>');
+				//$("<img/>").attr("src", options.slides[currentSlide].image).appendTo(element).wrap('<a class="activeslide" ' + imageLink + linkTarget + '></a>');
+				$("<img/>").css("background-image",'url("' + options.slides[currentSlide].image + '")').appendTo(element).wrap('<a class="activeslide" ' + imageLink + linkTarget + '></a>');
 			
 				if (options.slides.length > 1){
 					//Set next image
 					currentSlide == options.slides.length - 1 ? loadNext = 0 : loadNext = currentSlide + 1;	//If slide is last, load first slide as next
 					imageLink = (options.slides[loadNext].url) ? "href='" + options.slides[loadNext].url + "'" : "";
-					$("<img/>").attr("src", options.slides[loadNext].image).appendTo(element).wrap('<a ' + imageLink + linkTarget + '></a>');
+					$("<img/>").css("background-image", 'url("' + options.slides[loadNext].image + '");').appendTo(element).wrap('<a ' + imageLink + linkTarget + '></a>');
 				}
 				
 				/***End load initial images***/
@@ -257,7 +261,7 @@ $(function(){
 		
 			}
 			
-			resizenow();	//Resize background image
+			//resizenow();	//Resize background image
 			
 			if (options.slide_captions) $('#slidecaption').html(options.slides[currentSlide].title);		//Pull caption from array
 			if (!(options.navigation)) $('#navigation').hide();	//Display navigation
@@ -808,7 +812,9 @@ $(function(){
 			
 			currentSlide - 1 < 0  ? loadSlide = slides.length - 1 : loadSlide = currentSlide - 1;	//Determine next slide
 			imageLink = (options.slides[loadSlide].url) ? "href='" + options.slides[loadSlide].url + "'" : "";	//If link exists, build it
-			$("<img/>").attr("src", options.slides[loadSlide].image).prependTo(element).wrap("<a " + imageLink + linkTarget + "></a>");	//Append new image
+			// $("<img/>").attr("src", options.slides[loadSlide].image).prependTo(element).wrap("<a " + imageLink + linkTarget + "></a>");	//Append new image
+			$("<img/>").css("background-image",'url("' + options.slides[loadSlide].image + '")').prependTo(element).wrap("<a " + imageLink + linkTarget + "></a>");	//Append new image
+			
 			
 			//Update thumbnails (if enabled)
 			if (options.thumbnail_navigation == 1){
