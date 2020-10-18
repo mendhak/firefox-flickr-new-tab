@@ -19,6 +19,6 @@ getImage = function() {
 }
 getImage();
 
-reload = function(){location.reload();}
-setInterval(reload, 60000);
+// reload = function(){getImage();}
+// setInterval(reload, 30000);
 
