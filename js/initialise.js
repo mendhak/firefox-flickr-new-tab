@@ -1,8 +1,8 @@
 
 
-getImage = function() {
+getImage = function(flickrsetid) {
     api_key='ce627966d2544e939f0306fcbfd919ce';
-    set_id='72157716222153076';
+    set_id=flickrsetid;
     
     
     var flickrURL =  'https://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&extras=url_k,url_3k,url_4k,url_q,url_o&api_key=' 
@@ -21,8 +21,22 @@ getImage = function() {
       }); 
 
 }
-getImage();
 
-// reload = function(){getImage();}
-// setInterval(reload, 30000);
+
+
+function onError(error) {
+    console.log(`Error: ${error}`);
+}
+
+function onReceived(item) {
+    let flickrsetid = "72157716222153076";
+    if (item.flickrsetid) {
+        flickrsetid = item.flickrsetid;
+    }
+    console.log(flickrsetid);
+    getImage(flickrsetid);
+}
+
+let requestFlickrSetId = browser.storage.sync.get("flickrsetid");
+requestFlickrSetId.then(onReceived, onError);
 

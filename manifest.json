@@ -15,7 +15,17 @@
     },
     "homepage_url": "https://github.com/mendhak/firefox-mendhak-flickr",
     
-    "permissions": []
+    "permissions": ["storage"],
      
+    "options_ui": {
+      "page": "options.html"
+    },
+  
+ 
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "addon@example.com"
+      }
+    }
   
   }
