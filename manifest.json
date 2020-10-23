@@ -7,7 +7,7 @@
     "description": "Replaces Firefox New Tab, with photos from a Flickr album of your choice",
   
     "icons": {
-      "48": "icons/favicon.png"
+      "48": "icons/flickr-tab-frog-3.png"
     },
 
     "chrome_url_overrides": {
