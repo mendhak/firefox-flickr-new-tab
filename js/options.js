@@ -1,31 +1,73 @@
 const defaultFlickrSetId="72157716222153076";
+const defaultPhotoSize="k";
+const defaultImgSource="photoset";
+
+function showMessage(message){
+    document.getElementById("debugtext").textContent = message;
+}
 
 function saveOptions(e) {
     e.preventDefault();
+    
+    showMessage("");
+
+    
+    let flickrImgSource = defaultImgSource;
+    if(document.querySelector('input[name="imgsource"]:checked')){
+        flickrImgSource = document.querySelector('input[name="imgsource"]:checked').value;
+    }
+
+    let flickrPhotoSize = defaultPhotoSize;
+    if(document.querySelector('input[name="photosize"]:checked')){
+        flickrPhotoSize = document.querySelector('input[name="photosize"]:checked').value;
+    }
+
+    let flickrSetID = document.querySelector("#flickrsetid").value;
+    
     browser.storage.sync.set({
-        flickrsetid: document.querySelector("#flickrsetid").value
+        flickrsetid: flickrSetID,
+        flickrimgsource: flickrImgSource,
+        flickrphotosize: flickrPhotoSize
     });
+
+    showMessage(`Values saved: ${flickrImgSource}, ${flickrSetID}, ${flickrPhotoSize}`);
 }
 
 function resetOptions(e) {
     e.preventDefault();
+    showMessage("");
     document.querySelector("#flickrsetid").value = defaultFlickrSetId;
+    document.querySelector(`#imgsource${defaultImgSource}`).checked = true;
+    document.querySelector(`#photosize${defaultPhotoSize}`).checked = true;
+
     browser.storage.sync.set({
-        flickrsetid: defaultFlickrSetId
+        flickrsetid: defaultFlickrSetId,
+        flickrimgsource: defaultImgSource,
+        flickrphotosize: defaultPhotoSize,
     });
+    showMessage("Values have been reset to defaults");
 }
 
 function restoreOptions() {
 
+    showMessage("");
+
     function setCurrentChoice(result) {
         document.querySelector("#flickrsetid").value = result.flickrsetid || defaultFlickrSetId;
+
+        let selectedPhotoSize = result.flickrphotosize || defaultPhotoSize;
+        document.querySelector(`#photosize${selectedPhotoSize}`).checked = true;
+
+        let selectedImgSource = result.flickrimgsource || defaultImgSource;
+        document.querySelector(`#imgsource${selectedImgSource}`).checked = true;
+       
     }
 
     function onError(error) {
         console.log(`Error: ${error}`);
     }
 
-    let getting = browser.storage.sync.get("flickrsetid");
+    let getting = browser.storage.sync.get();
     getting.then(setCurrentChoice, onError);
 }
 
