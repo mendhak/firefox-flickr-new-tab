@@ -3,7 +3,7 @@ const defaultPhotoSize="k";
 const defaultImgSource="photoset";
 
 function showMessage(message){
-    document.getElementById("debugtext").innerHTML = message;
+    document.getElementById("debugtext").textContent = message;
 }
 
 function saveOptions(e) {
