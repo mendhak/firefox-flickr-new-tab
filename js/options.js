@@ -1,4 +1,6 @@
 const defaultFlickrSetId="72157716222153076";
+const defaultPhotoSize="k";
+const defaultImgSource="photoset";
 
 function showMessage(message){
     document.getElementById("debugtext").innerHTML = message;
@@ -8,29 +10,42 @@ function saveOptions(e) {
     e.preventDefault();
     
     showMessage("");
+
     
     let flickrImgSource = "photoset";
     let flickrSetID = document.querySelector("#flickrsetid").value;
+    let flickrPhotoSize = "k";
+
+
     if(document.querySelector("#chooseexplore").checked){
         flickrImgSource = "explore";
     }
+
+    if(document.querySelector('input[name="photosize"]:checked')){
+        flickrPhotoSize = document.querySelector('input[name="photosize"]:checked').value;
+    }
+
     
     browser.storage.sync.set({
         flickrsetid: flickrSetID,
-        flickrimgsource: flickrImgSource
+        flickrimgsource: flickrImgSource,
+        flickrphotosize: flickrPhotoSize
     });
 
-    showMessage(`Values saved: ${flickrImgSource}, ${flickrSetID}`);
+    showMessage(`Values saved: ${flickrImgSource}, ${flickrSetID}, ${flickrPhotoSize}`);
 }
 
 function resetOptions(e) {
     e.preventDefault();
     showMessage("");
     document.querySelector("#flickrsetid").value = defaultFlickrSetId;
-    document.querySelector("#choosephotoset").checked = true;
+    document.querySelector(`#choose${defaultImgSource}`).checked = true;
+    document.querySelector(`#photosize${defaultPhotoSize}`).checked = true;
+
     browser.storage.sync.set({
         flickrsetid: defaultFlickrSetId,
-        flickrimgsource: "photoset"
+        flickrimgsource: defaultImgSource,
+        flickrphotosize: defaultPhotoSize,
     });
     showMessage("Values have been reset to defaults");
 }
@@ -41,6 +56,9 @@ function restoreOptions() {
 
     function setCurrentChoice(result) {
         document.querySelector("#flickrsetid").value = result.flickrsetid || defaultFlickrSetId;
+
+        let selectedPhotoSize = result.flickrphotosize || defaultPhotoSize;
+        document.querySelector(`#photosize${selectedPhotoSize}`).checked = true;
 
         switch(result.flickrimgsource){
             case "explore":

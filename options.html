@@ -67,6 +67,13 @@
       clear: both;
     }
 
+
+    hr {
+      border: 0;
+      border-bottom: 1px dashed #ccc;
+      background: #dddddd;
+    }
+
     @media screen and (max-width: 600px) {
       .col-25, .col-75, input[type=submit] {
         width: 100%;
@@ -100,7 +107,23 @@
             <sub>Photo chosen from the top 50 interesting images in Flickr Explore.</sub>
           </div>
         </div>
+
+        <hr  />
+        <div class="row">
+          <div class="col-25">
+            <label>Photo size:</label>
+          </div>
+          <div class="col-75" >
+            <input type="radio" id="photosizek" name="photosize" value="k"/><label for="photosizek">K</label>
+            <input type="radio" id="photosize3k" name="photosize" value="3k"/><label for="photosize3k">3K</label>
+            <input type="radio" id="photosize4k" name="photosize" value="4k"/><label for="photosize4k">4K</label>
+            <input type="radio" id="photosize5k" name="photosize" value="5k"/><label for="photosize5k">5K</label>
+            <input type="radio" id="photosize6k" name="photosize" value="6k"/><label for="photosize6k">6K</label>
+          </div>
+        </div>
         
+        <hr  />
+
         <div class="row">
           <label id="debugtext"></label>
           <input type="submit" value="Save">
