@@ -4,7 +4,7 @@
     "name": "Flickr Photos In New Tab",
     "version": "1.4",
   
-    "description": "Replaces Firefox New Tab, with photos from a Flickr album of your choice",
+    "description": "Replaces Firefox New Tab with photos from a Flickr album or Explore",
   
     "icons": {
       "48": "icons/flickr-tab-frog-3.png"
