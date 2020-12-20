@@ -12,19 +12,17 @@ function saveOptions(e) {
     showMessage("");
 
     
-    let flickrImgSource = "photoset";
-    let flickrSetID = document.querySelector("#flickrsetid").value;
-    let flickrPhotoSize = "k";
-
-
-    if(document.querySelector("#chooseexplore").checked){
-        flickrImgSource = "explore";
+    let flickrImgSource = defaultImgSource;
+    if(document.querySelector('input[name="imgsource"]:checked')){
+        flickrImgSource = document.querySelector('input[name="imgsource"]:checked').value;
     }
 
+    let flickrPhotoSize = defaultPhotoSize;
     if(document.querySelector('input[name="photosize"]:checked')){
         flickrPhotoSize = document.querySelector('input[name="photosize"]:checked').value;
     }
 
+    let flickrSetID = document.querySelector("#flickrsetid").value;
     
     browser.storage.sync.set({
         flickrsetid: flickrSetID,
@@ -39,7 +37,7 @@ function resetOptions(e) {
     e.preventDefault();
     showMessage("");
     document.querySelector("#flickrsetid").value = defaultFlickrSetId;
-    document.querySelector(`#choose${defaultImgSource}`).checked = true;
+    document.querySelector(`#imgsource${defaultImgSource}`).checked = true;
     document.querySelector(`#photosize${defaultPhotoSize}`).checked = true;
 
     browser.storage.sync.set({
@@ -60,16 +58,9 @@ function restoreOptions() {
         let selectedPhotoSize = result.flickrphotosize || defaultPhotoSize;
         document.querySelector(`#photosize${selectedPhotoSize}`).checked = true;
 
-        switch(result.flickrimgsource){
-            case "explore":
-                document.querySelector("#chooseexplore").checked = true;
-                break;
-            case "photoset":
-            default:
-                document.querySelector("#choosephotoset").checked = true;
-                break;
-        }
-        
+        let selectedImgSource = result.flickrimgsource || defaultImgSource;
+        document.querySelector(`#imgsource${selectedImgSource}`).checked = true;
+       
     }
 
     function onError(error) {

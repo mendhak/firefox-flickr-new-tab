@@ -5,7 +5,7 @@ getImage = function(flickrsetid, preferredSize) {
     set_id=flickrsetid;
     
     
-    var flickrURL =  'https://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&extras=url_k,url_3k,url_4k,url_5k,url_6k,url_q,url_o&api_key=' 
+    var flickrURL =  'https://api.flickr.com/services/rest/?&method=flickr.photosets.getPhotos&extras=url_k,url_3k,url_4k,url_5k,url_6k&api_key=' 
                         + api_key 
                         + '&photoset_id=' + set_id 
                         + '&per_page=100' 
@@ -35,7 +35,7 @@ findSuitableImage = function(photos, preferredSize) {
 getImageFromExplore = function(preferredSize) {
     api_key='ce627966d2544e939f0306fcbfd919ce';
 
-    var flickrURL = 'https://www.flickr.com/services/rest/?method=flickr.interestingness.getList&extras=url_k,url_3k,url_4k,url_5k,url_6k,url_q,url_o'
+    var flickrURL = 'https://www.flickr.com/services/rest/?method=flickr.interestingness.getList&extras=url_k,url_3k,url_4k,url_5k,url_6k'
                     + '&api_key=' + api_key 
                     + '&per_page=50'
                     + '&format=json&nojsoncallback=1';
@@ -58,14 +58,10 @@ function onError(error) {
 }
 
 function onReceived(item) {
-    let flickrsetid = "72157716222153076";
-    let preferredSize = "6k";
+    console.log(item);
 
-    if (item.flickrsetid) {
-        flickrsetid = item.flickrsetid;
-    }
-    console.log(flickrsetid);
-    console.log(item.flickrimgsource);
+    let flickrsetid = item.flickrsetid || "72157716222153076";
+    let preferredSize = item.flickrphotosize || "k";
     
     if(item.flickrimgsource == "explore"){
         getImageFromExplore(preferredSize);
