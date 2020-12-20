@@ -63,8 +63,15 @@ function onReceived(item) {
         flickrsetid = item.flickrsetid;
     }
     console.log(flickrsetid);
-    //getImage(flickrsetid);
-    getImageFromExplore();
+    console.log(item.flickrimgsource);
+    
+    if(item.flickrimgsource == "explore"){
+        getImageFromExplore();
+    }
+    else {
+        getImage(flickrsetid);
+    }
+    
 }
 
 let requestFlickrSetId = browser.storage.sync.get();

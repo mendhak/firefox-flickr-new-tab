@@ -82,14 +82,27 @@
       <form>
         <div class="row">
           <div class="col-25">
-            <label for="flickrsetid">Flickr Photoset ID:</label>
+            
+            <label for="choosephotoset"><input type="radio" id="choosephotoset" name="choose" value="true">Photoset ID:</label>
           </div>
           <div class="col-75">
             <input type="text" id="flickrsetid" name="flickrsetid">
+            <sub>Photo chosen from the latest 100 items in this album.</sub>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label><input type="radio" id="chooseexplore" name="choose" value="true">Flickr Explore</label>
+          </div>
+          <div class="col-75" style="text-align:unset; vertical-align: bottom; line-height: unset;">
+            <br />
+            <sub>Photo chosen from the top 50 interesting images in Flickr Explore.</sub>
           </div>
         </div>
         
         <div class="row">
+          <label id="debugtext"></label>
           <input type="submit" value="Save">
           <input type="reset" value="Reset">
         </div>
