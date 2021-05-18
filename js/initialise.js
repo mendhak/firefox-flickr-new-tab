@@ -1,6 +1,6 @@
 
 
-getImage = function(flickrsetid, preferredSize) {
+getImageFromPhotoset = function(flickrsetid, preferredSize) {
     api_key='ce627966d2544e939f0306fcbfd919ce';
     set_id=flickrsetid;
     
@@ -67,7 +67,7 @@ function onReceived(item) {
         getImageFromExplore(preferredSize);
     }
     else {
-        getImage(flickrsetid, preferredSize);
+        getImageFromPhotoset(flickrsetid, preferredSize);
     }
     
 }
