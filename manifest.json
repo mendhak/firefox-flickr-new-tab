@@ -2,9 +2,9 @@
 
     "manifest_version": 2,
     "name": "Flickr Photos In New Tab",
-    "version": "1.5",
+    "version": "1.6",
   
-    "description": "Replaces Firefox New Tab with photos from a Flickr album or Explore",
+    "description": "Replaces Firefox New Tab with photos from a Flickr album, Explore or Search",
   
     "icons": {
       "48": "icons/flickr-tab-frog-3.png"
