@@ -1,4 +1,5 @@
 const defaultFlickrSetId="72157716222153076";
+const defaultFlickrTextSearch="bokeh";
 const defaultPhotoSize="k";
 const defaultImgSource="photoset";
 
@@ -23,20 +24,23 @@ function saveOptions(e) {
     }
 
     let flickrSetID = document.querySelector("#flickrsetid").value;
+    let flickrTextSearch = document.querySelector("#flickrtextsearch").value;
     
     browser.storage.sync.set({
         flickrsetid: flickrSetID,
         flickrimgsource: flickrImgSource,
-        flickrphotosize: flickrPhotoSize
+        flickrphotosize: flickrPhotoSize,
+        flickrtextsearch: flickrTextSearch
     });
 
-    showMessage(`Values saved: ${flickrImgSource}, ${flickrSetID}, ${flickrPhotoSize}`);
+    showMessage(`Values saved: ${flickrImgSource}, ${flickrSetID}, ${flickrTextSearch}, ${flickrPhotoSize}`);
 }
 
 function resetOptions(e) {
     e.preventDefault();
     showMessage("");
     document.querySelector("#flickrsetid").value = defaultFlickrSetId;
+    document.querySelector("#flickrtextsearch").value = defaultFlickrTextSearch;
     document.querySelector(`#imgsource${defaultImgSource}`).checked = true;
     document.querySelector(`#photosize${defaultPhotoSize}`).checked = true;
 
@@ -44,6 +48,7 @@ function resetOptions(e) {
         flickrsetid: defaultFlickrSetId,
         flickrimgsource: defaultImgSource,
         flickrphotosize: defaultPhotoSize,
+        flickrtextsearch: defaultFlickrTextSearch
     });
     showMessage("Values have been reset to defaults");
 }
@@ -54,6 +59,7 @@ function restoreOptions() {
 
     function setCurrentChoice(result) {
         document.querySelector("#flickrsetid").value = result.flickrsetid || defaultFlickrSetId;
+        document.querySelector("#flickrtextsearch").value = result.flickrtextsearch || defaultFlickrTextSearch;
 
         let selectedPhotoSize = result.flickrphotosize || defaultPhotoSize;
         document.querySelector(`#photosize${selectedPhotoSize}`).checked = true;
