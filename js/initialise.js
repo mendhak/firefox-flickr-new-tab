@@ -112,6 +112,7 @@ function onReceived(item) {
 
 }
 
+var browser = (window.browser)? window.browser : window.chrome;
 let requestFlickrSetId = browser.storage.sync.get();
 requestFlickrSetId.then(onReceived, onError);
 

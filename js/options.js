@@ -3,6 +3,8 @@ const defaultFlickrTextSearch="bokeh";
 const defaultPhotoSize="k";
 const defaultImgSource="photoset";
 
+var browser = (window.browser)? window.browser : window.chrome;
+
 function showMessage(message){
     document.getElementById("debugtext").textContent = message;
 }
