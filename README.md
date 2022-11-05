@@ -14,7 +14,9 @@ In Firefox, open up `about:debugging` and click 'This Firefox'
 Click 'Load Temporary Add-on...' and choose the `manifest.json` in this folder.
 
 
+### Microsoft Edge
 
+TBC - I will submit this extension to Microsoft Edge listing.  It was easy to make it compatible, just changed to Manifest v3 which supports Promises.  
 
 
 
