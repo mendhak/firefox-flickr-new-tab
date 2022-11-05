@@ -7,6 +7,12 @@ You can choose the Photoset ID, Flickr Explore, and Photo Sizes in `about:addons
 The Addon page is at: https://addons.mozilla.org/en-GB/firefox/addon/mendhak-flickr-new-tab/
 
 
+### Microsoft Edge
+
+TBC - I will submit this extension to Microsoft Edge listing.  It was easy to make it compatible, just changed to Manifest v3 which supports Promises.  
+
+
+
 ## Developing
 
 In Firefox, open up `about:debugging` and click 'This Firefox'
@@ -14,9 +20,6 @@ In Firefox, open up `about:debugging` and click 'This Firefox'
 Click 'Load Temporary Add-on...' and choose the `manifest.json` in this folder.
 
 
-### Microsoft Edge
-
-TBC - I will submit this extension to Microsoft Edge listing.  It was easy to make it compatible, just changed to Manifest v3 which supports Promises.  
 
 
 
