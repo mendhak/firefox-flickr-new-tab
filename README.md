@@ -9,7 +9,7 @@ The Addon page is at: https://addons.mozilla.org/en-GB/firefox/addon/mendhak-fli
 
 ### Microsoft Edge
 
-TBC - I will submit this extension to Microsoft Edge listing.  It was easy to make it compatible, just changed to Manifest v3 which supports Promises.  
+The addon page is at: https://microsoftedge.microsoft.com/addons/detail/flickr-photos-in-new-tab/egfjehkbfaakmjnjkfgkkgpbadngnlff 
 
 
 
